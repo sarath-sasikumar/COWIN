@@ -1,0 +1,23 @@
+export type VaccinationData = {
+  total: number;
+  male: number;
+  female: number;
+  others: number;
+  covishield: number;
+  covaxin: number;
+  sputnik: number;
+  today: number;
+  tot_dose_1: number;
+  tot_dose_2: number;
+  total_doses: number;
+  today_dose_one: number;
+  today_dose_two: number;
+  today_male: number;
+  today_female: number;
+  today_others: number;
+  today_aefi: number;
+  aefi: number;
+  yesterday_vac: number;
+  yesterday_dose_one: number;
+  yesterday_dose_two: number;
+};

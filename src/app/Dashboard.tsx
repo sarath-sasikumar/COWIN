@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {Button, Card, Picker} from 'react-native-ui-lib';
+
+import VaccinationDetails from './VaccinationDetails';
 
 import {District} from '../types/district';
 import {Dropdown} from '../types/dropdown';
 import {State} from '../types/state';
+import {VaccinationData} from '../types/vaccinationData';
 
 import {fetchVaccinationData, getDistricts, getStates} from './service';
 
@@ -13,14 +16,15 @@ const Dashboard = () => {
   const [districtList, setDistrictList] = useState<Array<District>>([]);
   const [stateCode, setStateCode] = useState<Dropdown>();
   const [districtCode, setDistrictCode] = useState<Dropdown>();
-  const [vaccineData, setVaccineData] = useState<any>();
+  const [vaccineData, setVaccineData] = useState<VaccinationData>();
 
   const fetchData = async () => {
     const data = await fetchVaccinationData(
       stateCode?.value,
       districtCode?.value,
     );
-    setVaccineData(data);
+    console.log(data);
+    setVaccineData(data.vaccination);
   };
 
   useEffect(() => {
@@ -69,18 +73,8 @@ const Dashboard = () => {
             />
           ))}
         </Picker>
-        <Button onPress={fetchData} label="Fetch Data" />
-        {vaccineData && (
-          <View style={styles.resultSection}>
-            <Text style={styles.resultHeader}>Vaccination Stats for Today</Text>
-
-            <Text>{`Total Vaccinations Today : ${vaccineData.vaccination.today}`}</Text>
-
-            <Text>{`First Dose Vaccinations Today : ${vaccineData.vaccination.today_dose_one}`}</Text>
-
-            <Text>{`Second Dose Vaccinations Today : ${vaccineData.vaccination.today_dose_two}`}</Text>
-          </View>
-        )}
+        <Button onPress={fetchData} label="Fetch Vaccine Data" />
+        {vaccineData && <VaccinationDetails vaccineData={vaccineData} />}
       </Card>
     </SafeAreaView>
   );
@@ -95,19 +89,14 @@ const styles = StyleSheet.create({
   },
   cardHeader: {
     fontSize: 16,
+    fontWeight: 'bold',
     paddingBottom: 16,
+    color: 'black',
   },
   input: {
     height: 40,
     margin: 12,
     borderWidth: 1,
-  },
-  resultSection: {
-    paddingTop: 16,
-  },
-  resultHeader: {
-    fontSize: 16,
-    fontWeight: 'bold',
   },
 });
 

@@ -34,10 +34,7 @@ const App = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+        <View>
           <Dashboard />
         </View>
       </ScrollView>
