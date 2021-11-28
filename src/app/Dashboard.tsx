@@ -40,6 +40,7 @@ const Dashboard = () => {
       const districtListData = await getDistricts(stateCode?.value);
       setDistrictList(districtListData);
     }
+    setDistrictCode(undefined);
     fetchDistrictList();
   }, [stateCode]);
 
@@ -52,6 +53,9 @@ const Dashboard = () => {
         <Picker
           placeholder="Select State"
           value={stateCode}
+          showSearch
+          searchPlaceholder="Search for States"
+          searchStyle={styles.searchStyle}
           onChange={setStateCode}>
           {stateList.map((state: State) => (
             <Picker.Item
@@ -64,6 +68,9 @@ const Dashboard = () => {
         <Picker
           placeholder="Select District"
           value={districtCode}
+          showSearch
+          searchPlaceholder="Search for Districts"
+          searchStyle={styles.searchStyle}
           onChange={setDistrictCode}>
           {districtList.map((district: District) => (
             <Picker.Item
@@ -97,6 +104,9 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
+  },
+  searchStyle: {
+    color: 'black',
   },
 });
 
