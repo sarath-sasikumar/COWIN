@@ -11,3 +11,19 @@ export const fetchVaccinationData = (stateCode, districtCode) => {
     .then(vaccineData => vaccineData.topBlock);
   return data;
 };
+
+export const getStates = () => {
+  const data = fetch('https://cdn-api.co-vin.in/api/v2/admin/location/states')
+    .then(response => response.json())
+    .then(stateData => stateData.states);
+  return data;
+};
+
+export const getDistricts = stateId => {
+  const data = fetch(
+    `https://cdn-api.co-vin.in/api/v2/admin/location/districts/${stateId}`,
+  )
+    .then(response => response.json())
+    .then(districtData => districtData.districts);
+  return data;
+};
