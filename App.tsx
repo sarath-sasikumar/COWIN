@@ -13,8 +13,8 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  useColorScheme,
   View,
+  useColorScheme,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -34,10 +34,7 @@ const App = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+        <View>
           <Dashboard />
         </View>
       </ScrollView>
