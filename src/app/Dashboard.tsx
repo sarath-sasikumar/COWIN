@@ -23,7 +23,6 @@ const Dashboard = () => {
       stateCode?.value,
       districtCode?.value,
     );
-    console.log(data);
     setVaccineData(data.vaccination);
   };
 

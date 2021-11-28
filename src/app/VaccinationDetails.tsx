@@ -28,7 +28,25 @@ const VaccinationDetails = (props: Props) => {
           styles.resultValue
         }>{`Second Dose Vaccinations Today : ${vaccineData.today_dose_two}`}</Text>
 
+      <Text style={styles.resultHeader}>Vaccination Stats for Yesterday</Text>
+
+      <Text
+        style={
+          styles.resultValue
+        }>{`Total Vaccinations Yesterday : ${vaccineData.yesterday_vac}`}</Text>
+
+      <Text
+        style={
+          styles.resultValue
+        }>{`First Dose Vaccinations Yesterday : ${vaccineData.yesterday_dose_one}`}</Text>
+
+      <Text
+        style={
+          styles.resultValue
+        }>{`Second Dose Vaccinations Yesterday : ${vaccineData.yesterday_dose_two}`}</Text>
+
       <Text style={styles.resultHeader}>Overall Stats</Text>
+
       <Text
         style={
           styles.resultValue
